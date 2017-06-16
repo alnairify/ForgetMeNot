@@ -13,6 +13,7 @@ import java.util.Date;
 public class Memo implements Serializable {
     private Date date;
     private String text;
+    private String title;
     private boolean fullDisplayed;
     private static DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyy 'at' hh:mm aaa");
 
@@ -20,9 +21,18 @@ public class Memo implements Serializable {
         this.date = new Date();
     }
 
-    public Memo(long time, String text) {
+    public Memo(long time, String text, String title) {
         this.date = new Date(time);
         this.text = text;
+        this.title=title;
+    }
+
+    public void setTitle(String title){
+        this.title = title;
+    }
+
+    public String getTitle(){
+        return this.title;
     }
 
     public String getDate() {

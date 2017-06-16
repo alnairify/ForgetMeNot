@@ -19,6 +19,7 @@
         <activity android:name=".EditActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".MidActivity" />
+        <activity android:name=".MonthActivity"></activity>
     </application>
 
 </manifest>

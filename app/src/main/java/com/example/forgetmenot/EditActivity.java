@@ -10,6 +10,7 @@ import com.example.forgetmenot.db.DatabaseAccess;
 
 public class EditActivity extends ActionBarActivity {
     private EditText etText;
+    private EditText titleText;
     private Button btnSave;
     private Button btnCancel;
     private Memo memo;
@@ -20,6 +21,7 @@ public class EditActivity extends ActionBarActivity {
         setContentView(R.layout.activity_edit);
 
         this.etText = (EditText) findViewById(R.id.etText);
+        this.titleText = (EditText) findViewById(R.id.titleText);
         this.btnSave = (Button) findViewById(R.id.btnSave);
         this.btnCancel = (Button) findViewById(R.id.btnCancel);
 
@@ -28,6 +30,7 @@ public class EditActivity extends ActionBarActivity {
             memo = (Memo) bundle.get("MEMO");
             if(memo != null) {
                 this.etText.setText(memo.getText());
+                this.titleText.setText(memo.getTitle());
             }
         }
 
@@ -53,10 +56,12 @@ public class EditActivity extends ActionBarActivity {
             // Add new memo
             Memo temp = new Memo();
             temp.setText(etText.getText().toString());
+            temp.setTitle(titleText.getText().toString());
             databaseAccess.save(temp);
         } else {
             // Update the memo
             memo.setText(etText.getText().toString());
+            memo.setTitle(titleText.getText().toString());
             databaseAccess.update(memo);
         }
         databaseAccess.close();

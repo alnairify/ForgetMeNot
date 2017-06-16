@@ -86,6 +86,11 @@ public class MainActivity extends ActionBarActivity {
         startActivity(intent);
     }
 
+    public void onSun(View view){
+        Intent intent = new Intent(this, MonthActivity.class);
+        startActivity(intent);
+    }
+
     private class MemoAdapter extends ArrayAdapter<Memo> {
 
 

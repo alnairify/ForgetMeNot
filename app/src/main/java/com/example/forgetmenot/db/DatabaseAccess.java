@@ -44,6 +44,7 @@ public class DatabaseAccess {
         ContentValues values = new ContentValues();
         values.put("date", memo.getTime());
         values.put("memo", memo.getText());
+        values.put("name", memo.getTitle());
         database.insert(DatabaseOpenHelper.TABLE, null, values);
     }
 
@@ -51,6 +52,7 @@ public class DatabaseAccess {
         ContentValues values = new ContentValues();
         values.put("date", new Date().getTime());
         values.put("memo", memo.getText());
+        values.put("name", memo.getTitle());
         String date = Long.toString(memo.getTime());
         database.update(DatabaseOpenHelper.TABLE, values, "date = ?", new String[]{date});
     }
@@ -67,7 +69,8 @@ public class DatabaseAccess {
         while (!cursor.isAfterLast()) {
             long time = cursor.getLong(0);
             String text = cursor.getString(1);
-            memos.add(new Memo(time, text));
+            String title = cursor.getString(2);
+            memos.add(new Memo(time, text,title));
             cursor.moveToNext();
         }
         cursor.close();

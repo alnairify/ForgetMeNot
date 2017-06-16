@@ -19,11 +19,12 @@ class DatabaseOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE memo(date INTEGER PRIMARY KEY, memo TEXT);");
+        db.execSQL("CREATE TABLE memo(date INTEGER PRIMARY KEY, memo TEXT, name TITLE);");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
 
     }
 }
